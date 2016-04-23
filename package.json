@@ -10,5 +10,8 @@
   "license": "ISC",
   "devDependencies": {
     "chai": "^3.5.0"
+  },
+  "dependencies": {
+    "async": "^2.0.0-rc.3"
   }
 }
