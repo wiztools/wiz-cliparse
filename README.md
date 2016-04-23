@@ -1,5 +1,13 @@
 # WizTools.org Cli Parse
 
+## Intro
+
+A Node library to parse commands of structure:
+
+    cmd [global-options] [command] [command-options] [arguments]
+
+Was primarily written after getting disillusioned by existing libraries like [commander.js](https://github.com/tj/commander.js/).
+
 ## Install
 
     npm install https://github.com/wiztools/wiz-cliparse.git
