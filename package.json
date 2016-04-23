@@ -1,0 +1,14 @@
+{
+  "name": "wiz-cliparse",
+  "version": "0.1.0",
+  "description": "WizTools.org cli parse lib.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Subhash Chandran",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0"
+  }
+}
