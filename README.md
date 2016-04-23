@@ -21,7 +21,7 @@ var cmdX = prg.addCmd('xyz', 'xyz command.');
 // Parsing:
 
 // 1. Success:
-var res = prg.parse(['-v', 'abc', '-c', 'arg1', 'arg2']);
+var res = prg.parseSync(['-v', 'abc', '-c', 'arg1', 'arg2']);
 console.log(res.gopts.has('v')); // prints `true`
 console.log(res.cmd); // prints `abc`
 console.log(res.opts.has('c')); // prints `true`
@@ -29,7 +29,20 @@ console.log(res.args); // prints `['arg1', 'arg2']`
 
 // 2. Failures:
 // Will throw error:
-prg.parse(['-x']); // Unrecognized global option: x.
-prg.parse(['def']); // Unrecognized command: def.
-prg.parse(['abc', '--frugal']); // Unrecognized option frugal for command abc.
+prg.parseSync(['-x']); // Unrecognized global option: x.
+prg.parseSync(['def']); // Unrecognized command: def.
+prg.parseSync(['abc', '--frugal']); // Unrecognized option frugal for command abc.
+```
+
+### Async Use
+
+```js
+prg.parse(['abc'], function(res, err){
+  if(err) {
+    console.error(err.description);
+  }
+  else {
+    // do your logic here!
+  }
+});
 ```

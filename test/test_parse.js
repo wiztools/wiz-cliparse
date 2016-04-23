@@ -10,7 +10,7 @@ cmd.addOpt('t', 'trace', 'trace description.');
 describe("test parse", function(){
   it('success parse', function(done){
     var args = ['-a', '--back', 'cmd', '--trace', 'arg1', 'arg2'];
-    var res = prg.parse(args);
+    var res = prg.parseSync(args);
     expect('cmd').to.equals(res.cmd);
     expect(new Set(['a', 'b', 'back'])).to.deep.equals(res.gopts);
     expect(new Set(['t', 'trace'])).to.deep.equals(res.opts);
@@ -22,21 +22,21 @@ describe("test parse", function(){
     // unrecognized command:
     expect(
       function() {
-        prg.parse(['nocmd', '--trace', 'arg1', 'arg2']);
+        prg.parseSync(['nocmd', '--trace', 'arg1', 'arg2']);
       }
     ).to.throw('Unrecognized command: nocmd.');
 
     // unrecognized gopt:
     expect(
       function() {
-        prg.parse(['-x']);
+        prg.parseSync(['-x']);
       }
     ).to.throw('Unrecognized global option: x.');
 
     // unrecognized opt:
     expect(
       function() {
-        prg.parse(['cmd', '-x']);
+        prg.parseSync(['cmd', '-x']);
       }
     ).to.throw('Unrecognized option x for command cmd.');
   });
