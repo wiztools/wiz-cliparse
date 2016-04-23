@@ -4,7 +4,7 @@
   "description": "WizTools.org cli parse lib.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha test/"
   },
   "author": "Subhash Chandran",
   "license": "ISC",
