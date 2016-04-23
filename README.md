@@ -39,7 +39,7 @@ prg.parseSync(['abc', '--frugal']); // Unrecognized option frugal for command ab
 ```js
 prg.parse(['abc'], function(res, err){
   if(err) {
-    console.error(err.description);
+    console.error(err.message);
   }
   else {
     // do your logic here!
