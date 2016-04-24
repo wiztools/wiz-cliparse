@@ -43,7 +43,7 @@ prg.parseSync(['def']); // Unrecognized command: def.
 prg.parseSync(['abc', '--frugal']); // Unrecognized option frugal for command abc.
 ```
 
-### Sync with callback
+### Synchronous parse with callback
 
 For developers who don't like using `try/catch`:
 
