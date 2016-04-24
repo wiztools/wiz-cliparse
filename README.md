@@ -43,6 +43,15 @@ prg.parseSync(['def']); // Unrecognized command: def.
 prg.parseSync(['abc', '--frugal']); // Unrecognized option frugal for command abc.
 ```
 
+### Parse result object
+
+Has following elements:
+
+1. `cmd` (String): The command that was called.
+2. `gopts` (Set): Global options. Has both the short and long options.
+3. `opts` (Set): Command options. Has both the short and long options.
+4. `args` (Array): List of arguments.
+
 ### Synchronous parse with callback
 
 For developers who don't like using `try/catch`:
@@ -58,7 +67,7 @@ prg.parseSyncCb(['abc'], function(res, err){
 });
 ```
 
-### Async Use
+### Asynchronous parse
 
 ```js
 prg.parse(['abc'], function(res, err){
