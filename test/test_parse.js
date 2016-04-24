@@ -11,10 +11,12 @@ describe("test parse", function(){
   it('success parse', function(done){
     var args = ['-a', '--back', 'cmd', '--trace', 'arg1', 'arg2'];
     var res = prg.parseSync(args);
-    expect('cmd').to.equals(res.cmd);
-    expect(new Set(['a', 'b', 'back'])).to.deep.equals(res.gopts);
-    expect(new Set(['t', 'trace'])).to.deep.equals(res.opts);
-    expect(['arg1', 'arg2']).to.deep.equals(res.args);
+    expect('cmd').to.equal(res.cmd);
+    expect(new Set(['a', 'b', 'back']).toString())
+      .to.equal(res.gopts.toString());
+    expect(new Set(['t', 'trace']).toString())
+      .to.equal(res.opts.toString());
+    expect(['arg1', 'arg2']).to.deep.equal(res.args);
     done();
   });
 
