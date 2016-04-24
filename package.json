@@ -8,6 +8,10 @@
   },
   "author": "Subhash Chandran",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wiztools/wiz-cliparse.git"
+  },
   "devDependencies": {
     "chai": "^3.5.0"
   },
