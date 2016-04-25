@@ -77,4 +77,23 @@ describe("test parse", function(){
       }
     ).to.throw('Mandatory option missing: a.');
   });
+
+  it('test global opt argument', function(){
+    var prg = new Program('mycmd', 'usage of mycmd.');
+    prg.addOpt('a', null, 'all option.', {isMandatory: true, hasArg: true});
+
+    var args = ['-a', 'a-value'];
+    var res = prg.parseSync(args);
+    expect(res.optArgs.get('a')).to.equal('a-value');
+  });
+
+  it('test command opt argument', function(){
+    var prg = new Program('mycmd', 'usage of mycmd.');
+    var cmd = prg.addCmd('cmd', 'cmd description.');
+    cmd.addOpt('x', null, 'except opt.', {hasArg: true});
+
+    var args = ['cmd', '-x', 'x-value'];
+    var res = prg.parseSync(args);
+    expect(res.optArgs.get('cmd.x')).to.equal('x-value');
+  });
 });
