@@ -6,7 +6,7 @@ A Node library to parse commands of structure:
 
     cmd [global-options] [command] [command-options] [arguments]
 
-Was primarily written after getting disillusioned by existing libraries like [commander.js](https://github.com/tj/commander.js/).
+Was primarily written after getting disillusioned by existing libraries like [commander.js](https://github.com/tj/commander.js/). The aim of the library is to get the fundamentals right, and then add features.
 
 ## Install
 
@@ -79,3 +79,14 @@ prg.parse(['abc'], function(res, err){
   }
 });
 ```
+
+### Parsing cli arguments
+
+```js
+var cliArg = process.argv.slice(2);
+prg.parse(cliArg, function(){/*...*/});
+```
+
+### Combining short options together
+
+It is possible to combine multiple short options as one. For example, instead of giving `-a -b`, it can be given as `-ab`.
