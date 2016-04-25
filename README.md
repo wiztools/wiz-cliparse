@@ -50,7 +50,8 @@ Has following elements:
 1. `cmd` (String): The command that was called.
 2. `gopts` (Set): Global options. Has both the short and long options.
 3. `opts` (Set): Command options. Has both the short and long options.
-4. `args` (Array): List of arguments.
+4. `optArg` (Map): A map of arguments to options.
+5. `args` (Array): List of arguments.
 
 ### Synchronous parse with callback
 
@@ -84,9 +85,38 @@ prg.parse(['abc'], function(res, err){
 
 ```js
 var cliArg = process.argv.slice(2);
-prg.parse(cliArg, function(){/*...*/});
+prg.parse(cliArg, /*...your code...*/);
 ```
 
 ### Combining short options together
 
 It is possible to combine multiple short options as one. For example, instead of giving `-a -b`, it can be given as `-ab`.
+
+### Options conf
+
+Options can have configurations:
+
+```js
+prg.addOpt('x', 'exception', 'print exception trace.', {hasArg: true, isMandatory: true});
+```
+
+Both global and command option can have these two configurations:
+
+1. `hasArg`: Has argument.
+2. `isMandatory`: Is a mandatory option.
+
+### Retrieving argument value of an option
+
+For global option:
+
+```js
+var arg = res.optArg.get('s'); // or:
+arg = res.optArg.get('long');
+```
+
+For command option (say for command `mycmd`):
+
+```js
+var arg = res.optArg.get('mycmd.s'); // or:
+arg = res.optArg.get('mycmd.long');
+```

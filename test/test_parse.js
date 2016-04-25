@@ -84,7 +84,7 @@ describe("test parse", function(){
 
     var args = ['-a', 'a-value'];
     var res = prg.parseSync(args);
-    expect(res.optArgs.get('a')).to.equal('a-value');
+    expect(res.optArg.get('a')).to.equal('a-value');
   });
 
   it('test -ve global opt argument', function(){
@@ -106,7 +106,7 @@ describe("test parse", function(){
 
     var args = ['cmd', '-x', 'x-value'];
     var res = prg.parseSync(args);
-    expect(res.optArgs.get('cmd.x')).to.equal('x-value');
+    expect(res.optArg.get('cmd.x')).to.equal('x-value');
   });
 
   it('test -ve command opt argument', function(){
