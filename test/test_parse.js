@@ -42,4 +42,11 @@ describe("test parse", function(){
       }
     ).to.throw('Unrecognized option x for command cmd.');
   });
+
+  it('multi-short option test', function(){
+    var args = ['-ab', 'cmd'];
+    var res = prg.parseSync(args);
+    expect(res.gopts.has('a')).to.be.ok;
+    expect(res.gopts.has('back')).to.be.ok;
+  });
 });
