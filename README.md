@@ -170,7 +170,7 @@ var res = prg.parseSync(/*...*/);
 
 // From option:
 if(res.gopts.has('h') || res.cmd === 'help') {
-  prg.help(res); // or:
-  prg.help(res, console.error); // if you want to print help in STDERR.
+  prg.printHelp(res); // or:
+  prg.printHelp(res, console.error); // if you want to print help in STDERR.
 }
 ```
