@@ -19,7 +19,7 @@ describe('visual check of help', function(){
   prg.addHelp();
 
   var res = prg.parseSync(['-h']);
-  prg.help(res, console.log);
+  prg.printHelp(res, console.log);
   drawLine();
 });
 
@@ -30,6 +30,6 @@ describe('visual check of help with command', function(){
   prg.addHelp();
 
   var res = prg.parseSync(['help', 'dummy']);
-  prg.help(res);
+  prg.printHelp(res);
   drawLine();
 });

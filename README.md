@@ -137,3 +137,40 @@ if(res.opts.has('s')) {
   arg = res.optArg.get('long');
 }
 ```
+
+### Configure and display `help`
+
+To add help option `-h, --help`:
+
+```js
+prg.addHelpOpt();
+```
+
+To add help command:
+
+```js
+prg.addHelpCmd();
+```
+
+To add both help option and command:
+
+```js
+prg.addHelp();
+```
+
+All the three above commands accept a optional `description` string to override the default.
+
+#### Display `help`
+
+```js
+// ...
+prg.addHelp();
+// ...
+var res = prg.parseSync(/*...*/);
+
+// From option:
+if(res.gopts.has('h') || res.cmd === 'help') {
+  prg.help(res); // or:
+  prg.help(res, console.error); // if you want to print help in STDERR.
+}
+```
