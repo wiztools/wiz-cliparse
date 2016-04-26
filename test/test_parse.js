@@ -155,4 +155,12 @@ describe("test parse", function(){
     var res = prg.parseSync(args);
     expect('X Me!').to.equal(res.optArg.get('x'));
   });
+
+  it('test no command arguments', function(){
+    var prg = new Program('mycmd', 'usage of mycmd.');
+
+    var args = ['arg1', 'arg2'];
+    var res = prg.parseSync(args);
+    expect(['arg1', 'arg2']).to.deep.equal(res.args);
+  });
 });
