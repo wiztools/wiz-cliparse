@@ -6,7 +6,11 @@ A Node library to parse commands of structure:
 
     cmd [global-options] [command] [command-options] [arguments]
 
-Was primarily written after getting disillusioned by existing libraries like [commander.js](https://github.com/tj/commander.js/). The aim of the library is to get the fundamentals right, and then add features.
+Can be used for simple argument parsing too:
+
+    cmd [options] [arguments]
+
+Was primarily written after getting disillusioned by existing libraries like [commander.js](https://github.com/tj/commander.js/).
 
 ## Install
 
