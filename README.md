@@ -50,8 +50,9 @@ Has following elements:
 1. `cmd` (String): The command that was called.
 2. `gopts` (Set): Global options. Has both the short and long options.
 3. `opts` (Set): Command options. Has both the short and long options.
-4. `optArg` (Map): A map of arguments to options.
-5. `args` (Array): List of arguments.
+4. `goptArg` (Map): A map of arguments to global options.
+5. `optArg` (Map): A map of arguments to command options.
+6. `args` (Array): List of arguments.
 
 ### Synchronous parse with callback
 
@@ -110,13 +111,17 @@ Both global and command option can have these two configurations:
 For global option:
 
 ```js
-var arg = res.optArg.get('s'); // or:
-arg = res.optArg.get('long');
+if(res.gopts.has('s')) {
+  var arg = res.goptArg.get('s'); // or:
+  arg = res.goptArg.get('long');
+}
 ```
 
-For command option (say for command `mycmd`):
+For command option:
 
 ```js
-var arg = res.optArg.get('mycmd.s'); // or:
-arg = res.optArg.get('mycmd.long');
+if(res.opts.has('s')) {
+  var arg = res.optArg.get('s'); // or:
+  arg = res.optArg.get('long');
+}
 ```
