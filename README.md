@@ -98,13 +98,19 @@ It is possible to combine multiple short options as one. For example, instead of
 Options can have configurations:
 
 ```js
-prg.addOpt('x', 'exception', 'print exception trace.', {hasArg: true, isMandatory: true});
+prg.addOpt('x', 'exception', 'print exception trace.',
+  {
+    isMandatory: true,
+    hasArg: true,
+    defaultArg: 'X'
+  });
 ```
 
 Both global and command option can have these two configurations:
 
-1. `hasArg`: Has argument.
-2. `isMandatory`: Is a mandatory option.
+1. `isMandatory`: Is a mandatory option.
+2. `hasArg`: Has argument. If `defaultArg` is not provided, will fail during parse.
+3. `defaultArg`: Default value to assign when an when an option supporting argument is not passed argument. Ignored when `hasArg` is not set to `true`.
 
 ### Retrieving argument value of an option
 
