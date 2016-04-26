@@ -145,6 +145,16 @@ describe("test parse", function(){
     expect('X Me!').to.equal(res.goptArg.get('x'));
   });
 
+  it('test default arg global opt with arg', function(){
+    var prg = new Program('mycmd', 'usage of mycmd.');
+    prg.addOpt('x', null, 'except opt.', {hasArg: true, defaultArg: 'X Me!'});
+    prg.addOpt('y', null, 'y for yellow.');
+
+    var args = ['-yx', 'Ping Me!'];
+    var res = prg.parseSync(args);
+    expect('Ping Me!').to.equal(res.goptArg.get('x'));
+  });
+
   it('test default arg command opt', function(){
     var prg = new Program('mycmd', 'usage of mycmd.');
     var cmd = prg.addCmd('mycmd', 'mycmd usage.');
