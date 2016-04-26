@@ -134,4 +134,25 @@ describe("test parse", function(){
       }
     ).to.throw('Argument expected for option: x.');
   });
+
+  it('test default arg global opt', function(){
+    var prg = new Program('mycmd', 'usage of mycmd.');
+    prg.addOpt('x', null, 'except opt.', {hasArg: true, defaultArg: 'X Me!'});
+    prg.addOpt('y', null, 'y for yellow.');
+
+    var args = ['-xy'];
+    var res = prg.parseSync(args);
+    expect('X Me!').to.equal(res.goptArg.get('x'));
+  });
+
+  it('test default arg command opt', function(){
+    var prg = new Program('mycmd', 'usage of mycmd.');
+    var cmd = prg.addCmd('mycmd', 'mycmd usage.');
+    cmd.addOpt('x', null, 'except opt.', {hasArg: true, defaultArg: 'X Me!'});
+    cmd.addOpt('y', null, 'y for yellow.');
+
+    var args = ['mycmd', '-xy'];
+    var res = prg.parseSync(args);
+    expect('X Me!').to.equal(res.optArg.get('x'));
+  });
 });
