@@ -121,4 +121,17 @@ describe("test parse", function(){
       }
     ).to.throw('Argument expected for option: x.');
   });
+
+  it('test -ve global opt argument with short cmd followed by another', function(){
+    var prg = new Program('mycmd', 'usage of mycmd.');
+    prg.addOpt('x', null, 'except opt.', {hasArg: true});
+    prg.addOpt('y', null, 'y for yellow.');
+
+    var args = ['-xy'];
+    expect(
+      function() {
+        var res = prg.parseSync(args);
+      }
+    ).to.throw('Argument expected for option: x.');
+  });
 });
