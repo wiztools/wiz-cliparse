@@ -17,6 +17,7 @@
     "mocha": "^2.4.5"
   },
   "dependencies": {
-    "async": "^2.0.0-rc.3"
+    "async": "^2.0.0-rc.3",
+    "sprintf-js": "^1.0.3"
   }
 }

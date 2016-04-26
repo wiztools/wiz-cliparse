@@ -11,8 +11,12 @@ var drawLine = function() {
 }
 
 describe('visual check of help', function(){
-  var prg = new Program('mycmd', '[global-options] [command] [command-options]');
+  var prg = new Program('mycmd', 'usage of mycmd.');
+  prg.addOpt('a', null, 'all option.');
+  prg.addOpt('b', 'back', 'back description.');
   prg.addOpt('h', null, 'help option.');
+  var cmd = prg.addCmd('cmd', 'cmd description.');
+  cmd.addOpt('t', 'trace', 'trace description.');
 
   var res = prg.parseSync(['-h']);
   prg.help(res, console.log);
