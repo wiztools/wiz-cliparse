@@ -109,8 +109,10 @@ prg.addOpt('x', 'exception', 'print exception trace.',
 Both global and command option can have these two configurations:
 
 1. `isMandatory`: Is a mandatory option.
-2. `hasArg`: Has argument. If `defaultArg` is not provided, will fail during parse.
-3. `defaultArg`: Default value to assign when an when an option supporting argument is not passed argument. Ignored when `hasArg` is not set to `true`.
+2. `hasArg`: Option has argument.
+3. `defaultArg`: Default value to assign when an when an option supporting argument is not passed argument.
+
+`hasArg` and `defaultArg` work in tandem. `hasArg` without `defaultArg` will expect argument to be present to the option. Parse will fail otherwise. When `defaultArg` is supplied, and the user has not input an argument, the value in `defaultArg` will be associated with the option. `defaultArg` without `hasArg` set to `true` will be ignored.
 
 ### Retrieving argument value of an option
 
