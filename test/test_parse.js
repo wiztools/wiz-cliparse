@@ -158,9 +158,11 @@ describe("test parse", function(){
 
   it('test no command arguments', function(){
     var prg = new Program('mycmd', 'usage of mycmd.');
+    prg.addOpt('t', null, 'trace description.')
 
-    var args = ['arg1', 'arg2'];
+    var args = ['arg1', '-t', 'arg2'];
     var res = prg.parseSync(args);
     expect(['arg1', 'arg2']).to.deep.equal(res.args);
+    expect(res.gopts.has('t')).to.be.ok;
   });
 });
