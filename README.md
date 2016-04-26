@@ -106,7 +106,7 @@ prg.addOpt('x', 'exception', 'print exception trace.',
   });
 ```
 
-Both global and command option can have these two configurations:
+Both global and command option can have these configurations:
 
 1. `isMandatory`: Is a mandatory option.
 2. `hasArg`: Option has argument.
