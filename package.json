@@ -1,6 +1,6 @@
 {
   "name": "wiz-cliparse",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "WizTools.org cli parse lib.",
   "main": "lib/program.js",
   "scripts": {

@@ -14,7 +14,7 @@ Was primarily written after getting disillusioned by existing libraries like [co
 
 ## Install
 
-    npm install https://github.com/wiztools/wiz-cliparse.git
+    npm install wiz-cliparse --save
 
 ## Use
 
