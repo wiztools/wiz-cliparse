@@ -10,7 +10,7 @@ Can be used for simple argument parsing too:
 
     cmd [options] [arguments]
 
-Was primarily written after getting disillusioned by existing libraries like [commander.js](https://github.com/tj/commander.js/).
+Was primarily written after getting disillusioned by existing libraries like [commander.js](https://github.com/tj/commander.js/). This aims to be the cli parsing library that Node deserves.
 
 ## Install
 
@@ -26,13 +26,15 @@ var prg = new Program('mycli',
   '[global-options] [command] [command-options] [arguments]', // usage. for rendering help o/p. optional.
   'short description.', // required.
   'long description.'); // optional.
-prg.addOpt('v', 'verbose', 'enable verbose output.');
+prg.addOpt('v',              // short form. Usage: -v
+  'verbose',                 // long form. Usage: --verbose
+  'enable verbose output.'); // description.
 
 // Adding commands and their options:
 var cmdA = prg.addCmd('abc', // command name.
   '[-c, --comprehensive]',   // usage. for rendering help o/p. optional.
-  'abc command.',            // short description.
-  'abc command long description.'); // long description. optional.
+  'abc command short description.', // required.
+  'abc command long description.'); // optional.
 cmdA.addOpt('c', 'comprehensive', 'comprehensive details.');
 var cmdX = prg.addCmd('xyz', null, 'xyz command.');
 
@@ -187,3 +189,4 @@ This prints context sensitive help also. For example, `cmd help mycmd`, will pri
 1. Short description.
 2. Usage (if available).
 3. Long description (if available).
+4. Options (if available).
