@@ -22,13 +22,19 @@ Was primarily written after getting disillusioned by existing libraries like [co
 var Program = require('wiz-cliparse');
 
 // Defining the program and its global options:
-var prg = new Program('mycli', '[global-options] [command] [command-options] [arguments]');
+var prg = new Program('mycli',
+  '[global-options] [command] [command-options] [arguments]', // usage. for rendering help o/p. optional.
+  'short description.', // required.
+  'long description.'); // optional.
 prg.addOpt('v', 'verbose', 'enable verbose output.');
 
 // Adding commands and their options:
-var cmdA = prg.addCmd('abc', 'abc command.');
+var cmdA = prg.addCmd('abc', // command name.
+  '[-c, --comprehensive]',   // usage. for rendering help o/p. optional.
+  'abc command.',            // short description.
+  'abc command long description.'); // long description. optional.
 cmdA.addOpt('c', 'comprehensive', 'comprehensive details.');
-var cmdX = prg.addCmd('xyz', 'xyz command.');
+var cmdX = prg.addCmd('xyz', null, 'xyz command.');
 
 // Parsing:
 
@@ -158,7 +164,7 @@ To add both help option and command:
 prg.addHelp();
 ```
 
-All the three above commands accept a optional `description` string to override the default.
+All the three above commands accept a optional `description` string to override the default short description.
 
 #### Display `help`
 
@@ -172,5 +178,12 @@ var res = prg.parseSync(/*...*/);
 if(res.gopts.has('h') || res.cmd === 'help') {
   prg.printHelp(res); // or:
   prg.printHelp(res, console.error); // if you want to print help in STDERR.
+  process.exit();
 }
 ```
+
+This prints context sensitive help also. For example, `cmd help mycmd`, will print detailed help about `mycmd`. The order of printing help:
+
+1. Short description.
+2. Usage (if available).
+3. Long description (if available).
