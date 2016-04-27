@@ -11,10 +11,10 @@ var drawLine = function() {
 }
 
 describe('visual check of help', function(){
-  var prg = new Program('mycmd', 'usage of mycmd.');
+  var prg = new Program('mycmd', '[usage]', 'short description of mycmd.', 'long description of mycmd.');
   prg.addOpt('a', null, 'all option.');
   prg.addOpt('b', 'back', 'back description.');
-  var cmd = prg.addCmd('cmd', 'cmd description.');
+  var cmd = prg.addCmd('cmd', null, 'cmd description.');
   cmd.addOpt('t', 'trace', 'trace description.');
   prg.addHelp();
 
@@ -25,7 +25,7 @@ describe('visual check of help', function(){
 
 describe('visual check of help with command', function(){
   var prg = new Program('mycmd', '[global-options] [command] [command-options]');
-  var cmd = prg.addCmd('dummy', 'dummy cmd desc.');
+  var cmd = prg.addCmd('dummy', '[-a]', 'dummy cmd short desc.', 'dummy cmd long desc.');
   cmd.addOpt('a', 'all', 'description of all option.');
   prg.addHelp();
 

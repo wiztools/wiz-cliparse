@@ -8,7 +8,7 @@ describe("test parse", function(){
     var prg = new Program('mycmd', 'usage of mycmd.');
     prg.addOpt('a', null, 'all option.');
     prg.addOpt('b', 'back', 'back description.');
-    var cmd = prg.addCmd('cmd', 'cmd description.');
+    var cmd = prg.addCmd('cmd', 'usage', 'cmd description.');
     cmd.addOpt('t', 'trace', 'trace description.');
 
     var args = ['-a', '--back', 'cmd', '--trace', 'arg1', 'arg2'];
@@ -27,7 +27,7 @@ describe("test parse", function(){
     var prg = new Program('mycmd', 'usage of mycmd.');
     prg.addOpt('a', null, 'all option.');
     prg.addOpt('b', 'back', 'back description.');
-    var cmd = prg.addCmd('cmd', 'cmd description.');
+    var cmd = prg.addCmd('cmd', 'usage', 'cmd description.');
     cmd.addOpt('t', 'trace', 'trace description.');
 
     // unrecognized command:
@@ -56,7 +56,7 @@ describe("test parse", function(){
     var prg = new Program('mycmd', 'usage of mycmd.');
     prg.addOpt('a', null, 'all option.');
     prg.addOpt('b', 'back', 'back description.');
-    var cmd = prg.addCmd('cmd', 'cmd description.');
+    var cmd = prg.addCmd('cmd', 'usage', 'cmd description.');
 
     var args = ['-ab', 'cmd'];
     var res = prg.parseSync(args);
@@ -68,7 +68,7 @@ describe("test parse", function(){
     var prg = new Program('mycmd', 'usage of mycmd.');
     prg.addOpt('a', null, 'all option.', {isMandatory: true});
     prg.addOpt('b', 'back', 'back description.');
-    var cmd = prg.addCmd('cmd', 'cmd description.');
+    var cmd = prg.addCmd('cmd', 'usage', 'cmd description.');
 
     var args = ['-b', 'cmd'];
     expect(
@@ -101,7 +101,7 @@ describe("test parse", function(){
 
   it('test +ve command opt argument', function(){
     var prg = new Program('mycmd', 'usage of mycmd.');
-    var cmd = prg.addCmd('cmd', 'cmd description.');
+    var cmd = prg.addCmd('cmd', 'usage', 'cmd description.');
     cmd.addOpt('x', null, 'except opt.', {hasArg: true});
 
     var args = ['cmd', '-x', 'x-value'];
@@ -111,7 +111,7 @@ describe("test parse", function(){
 
   it('test -ve command opt argument', function(){
     var prg = new Program('mycmd', 'usage of mycmd.');
-    var cmd = prg.addCmd('cmd', 'cmd description.');
+    var cmd = prg.addCmd('cmd', 'usage', 'cmd description.');
     cmd.addOpt('x', null, 'except opt.', {hasArg: true});
 
     var args = ['cmd', '-x'];
@@ -157,7 +157,7 @@ describe("test parse", function(){
 
   it('test default arg command opt', function(){
     var prg = new Program('mycmd', 'usage of mycmd.');
-    var cmd = prg.addCmd('mycmd', 'mycmd usage.');
+    var cmd = prg.addCmd('mycmd', 'usage', 'mycmd usage.');
     cmd.addOpt('x', null, 'except opt.', {hasArg: true, defaultArg: 'X Me!'});
     cmd.addOpt('y', null, 'y for yellow.');
 
