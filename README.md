@@ -27,8 +27,8 @@ var Program = require('wiz-cliparse');
 
 // Defining the program and its global options:
 var prg = new Program('mycli',
-  '[global-options] [command] [command-options] [arguments]', // usage. for rendering help o/p. optional.
   'short description.', // required.
+  '[global-options] [command] [command-options] [arguments]', // usage. for rendering help o/p. optional.
   'long description.'); // optional.
 prg.addOpt('v',              // short form. Usage: -v
   'verbose',                 // long form. Usage: --verbose
@@ -36,8 +36,8 @@ prg.addOpt('v',              // short form. Usage: -v
 
 // Adding commands and their options:
 var cmdA = prg.addCmd('abc', // command name.
-  '[-c, --comprehensive]',   // usage. for rendering help o/p. optional.
   'abc command short description.', // required.
+  '[-c, --comprehensive]',   // usage. for rendering help o/p. optional.
   'abc command long description.'); // optional.
 cmdA.addOpt('c', 'comprehensive', 'comprehensive details.');
 var cmdX = prg.addCmd('xyz', null, 'xyz command.');
@@ -45,7 +45,7 @@ var cmdX = prg.addCmd('xyz', null, 'xyz command.');
 // Parsing:
 
 // 1. Success:
-var res = prg.parseSync(['-v', 'abc', '-c', 'arg1', 'arg2']);
+var res = prg.parse(['-v', 'abc', '-c', 'arg1', 'arg2']);
 console.log(res.gopts.has('v')); // prints `true`
 console.log(res.cmd); // prints `abc`
 console.log(res.opts.has('c')); // prints `true`
@@ -54,9 +54,9 @@ console.log(res.args); // prints `['arg1', 'arg2']`
 
 // 2. Failures:
 // Will throw error:
-prg.parseSync(['-x']); // Unrecognized global option: x.
-prg.parseSync(['def']); // Unrecognized command: def.
-prg.parseSync(['abc', '--frugal']); // Unrecognized option frugal for command abc.
+prg.parse(['-x']); // Unrecognized global option: x.
+prg.parse(['def']); // Unrecognized command: def.
+prg.parse(['abc', '--frugal']); // Unrecognized option frugal for command abc.
 ```
 
 ### Parse result object
@@ -75,20 +75,7 @@ Has following elements:
 For developers who don't like using `try/catch`:
 
 ```js
-prg.parseSyncCb(['abc'], function(res, err){
-  if(err) { // Error object
-    console.error(err.message);
-  }
-  else {
-    // do your logic here!
-  }
-});
-```
-
-### Asynchronous parse
-
-```js
-prg.parse(['abc'], function(res, err){
+prg.parseCb(['abc'], function(res, err){
   if(err) { // Error object
     console.error(err.message);
   }
@@ -102,7 +89,7 @@ prg.parse(['abc'], function(res, err){
 
 ```js
 var cliArg = process.argv.slice(2);
-prg.parse(cliArg, /*...your code...*/);
+var res = prg.parse(cliArg);
 ```
 
 ### Combining short options together
