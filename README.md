@@ -139,6 +139,8 @@ if(res.opts.has('s')) {
 }
 ```
 
+Note, both the retrievals above will return an array if the option `multiArg` is set to true. Otherwise, it returns the last string that is set.
+
 ### Configure and display `help`
 
 To add help option `-h, --help`:
