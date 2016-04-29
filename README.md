@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/wiztools/wiz-cliparse.svg?branch=master)](https://travis-ci.org/wiztools/wiz-cliparse)
 [![NPM Version](http://img.shields.io/npm/v/wiz-cliparse.svg?style=flat)](https://www.npmjs.org/package/wiz-cliparse)
+[![NPM Downloads](https://img.shields.io/npm/dm/wiz-cliparse.svg?style=flat)](https://www.npmjs.org/package/wiz-cliparse)
 
 ## Intro
 
