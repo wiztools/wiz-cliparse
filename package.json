@@ -1,7 +1,11 @@
 {
   "name": "wiz-cliparse",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "WizTools.org cli parse lib.",
+  "keywords": [
+    "cli", "parser", "argparse", "cliparse", "optparse", "args"
+  ],
+  "homepage": "https://github.com/wiztools/wiz-cliparse",
   "main": "lib/program.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha test/"
