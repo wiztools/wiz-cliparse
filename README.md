@@ -1,5 +1,7 @@
 # WizTools.org Cli Parse
 
+[![Build Status](https://travis-ci.org/wiztools/wiz-cliparse.svg?branch=master)](https://travis-ci.org/wiztools/wiz-cliparse)
+
 ## Intro
 
 A Node library to parse commands of structure:
