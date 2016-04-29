@@ -167,7 +167,7 @@ All the three above commands accept a optional `description` string to override 
 // ...
 prg.addHelp();
 // ...
-var res = prg.parseSync(/*...*/);
+var res = prg.parse(/*...*/);
 
 // From option:
 if(res.gopts.has('h') || res.cmd === 'help') {
