@@ -88,8 +88,7 @@ prg.parseCb(['abc'], function(res, err){
 ### Parsing cli arguments
 
 ```js
-var cliArg = process.argv.slice(2);
-var res = prg.parse(cliArg);
+var res = prg.parse();
 ```
 
 ### Combining short options together
@@ -139,7 +138,7 @@ if(res.opts.has('s')) {
 }
 ```
 
-Note, both the retrievals above will return an array if the option `multiArg` is set to true. Otherwise, it returns the last string that is set.
+Note, both the retrievals above will return an array if the option `multiArg` is set to `true`. Otherwise, it returns the last string that is set.
 
 ### Configure and display `help`
 
