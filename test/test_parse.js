@@ -166,6 +166,24 @@ describe("test parse", function(){
     expect('X Me!').to.equal(res.optArg.get('x'));
   });
 
+  it('test multi-arg opts', function(){
+    var prg = new Program('mycmd', 'usage of mycmd.');
+    prg.addOpt('x', null, 'except opt.', {hasArg: true, multiArg: true});
+
+    var args = ['-x', 'one', '-x', 'two'];
+    var res = prg.parseSync(args);
+    expect(['one', 'two']).to.deep.equal(res.goptArg.get('x'));
+  });
+
+  it('test multi-arg with default', function(){
+    var prg = new Program('mycmd', 'usage of mycmd.');
+    prg.addOpt('x', null, 'except opt.', {hasArg: true, multiArg: true, defaultArg: 'X Me!'});
+
+    var args = ['-x'];
+    var res = prg.parseSync(args);
+    expect(['X Me!']).to.deep.equal(res.goptArg.get('x'));
+  });
+
   it('test no command arguments', function(){
     var prg = new Program('mycmd', 'usage of mycmd.');
     prg.addOpt('t', null, 'trace description.')
