@@ -88,7 +88,12 @@ prg.parseCb(['abc'], function(res, err){
 ### Parsing cli arguments
 
 ```js
-var res = prg.parse(); // or:
+var res = prg.parse();
+```
+
+For callback:
+
+```js
 prg.parseCb(null, function(res, err){/*...*/});
 ```
 
