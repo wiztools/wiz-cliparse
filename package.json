@@ -1,6 +1,6 @@
 {
   "name": "wiz-cliparse",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "The commandline parser library that Node deserves.",
   "keywords": [
     "cli", "parser", "argparse", "cliparse", "optparse", "option", "args", "argv", "commander"
