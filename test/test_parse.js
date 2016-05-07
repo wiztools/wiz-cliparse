@@ -79,7 +79,7 @@ describe("test parse", function(){
     ).to.throw('Mandatory option missing: a.');
   });
 
-  it('test mandatory option with help', function(){
+  it('test mandatory option with help option', function(){
     var prg = new Program('mycmd', 'short description of mycmd.');
     prg.addOpt('a', null, 'all option.', {isMandatory: true});
     prg.addOpt('b', 'back', 'back description.');
@@ -89,6 +89,18 @@ describe("test parse", function(){
     var args = ['-h'];
     var res = prg.parse(args);
     expect(res.gopts.has('help')).to.be.ok;
+  });
+
+  it('test mandatory option with help command', function(){
+    var prg = new Program('mycmd', 'short description of mycmd.');
+    prg.addOpt('a', null, 'all option.', {isMandatory: true});
+    prg.addOpt('b', 'back', 'back description.');
+    var cmd = prg.addCmd('cmd', 'cmd description.', 'usage');
+    prg.addHelpCmd();
+
+    var args = ['help', 'cmd'];
+    var res = prg.parse(args);
+    expect(res.cmd === 'help').to.be.ok;
   });
 
   it('test +ve global opt argument', function(){
