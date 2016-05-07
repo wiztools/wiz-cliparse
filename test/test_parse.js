@@ -68,6 +68,7 @@ describe("test parse", function(){
     var prg = new Program('mycmd', 'short description of mycmd.');
     prg.addOpt('a', null, 'all option.', {isMandatory: true});
     prg.addOpt('b', 'back', 'back description.');
+    prg.addHelpOpt();
     var cmd = prg.addCmd('cmd', 'cmd description.', 'usage');
 
     var args = ['-b', 'cmd'];
@@ -82,14 +83,12 @@ describe("test parse", function(){
     var prg = new Program('mycmd', 'short description of mycmd.');
     prg.addOpt('a', null, 'all option.', {isMandatory: true});
     prg.addOpt('b', 'back', 'back description.');
+    prg.addHelpOpt();
     var cmd = prg.addCmd('cmd', 'cmd description.', 'usage');
 
     var args = ['-h'];
-    expect(
-      function() {
-        var res = prg.parse(args);
-      }
-    ).not.to.throw('Mandatory option missing: a.');
+    var res = prg.parse(args);
+    expect(res.gopts.has('help')).to.be.ok;
   });
 
   it('test +ve global opt argument', function(){
