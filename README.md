@@ -117,7 +117,7 @@ prg.addOpt('x', 'exception', 'print exception trace.',
 
 Both global and command option can have these configurations:
 
-1. `isMandatory`: Is a mandatory option.
+1. `isMandatory`: Is a mandatory option. Check will happen in all cases except one: when `help` option / command is passed. We want `help` to be accessible even when mandatory option is not provided.
 2. `hasArg`: Option has argument.
 3. `defaultArg`: Default value to assign when an when an option supporting argument is not passed argument.
 4. `multiArg`: Support multiple arguments like `-H value1 -H value2`.
