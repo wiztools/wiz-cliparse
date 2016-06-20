@@ -95,7 +95,7 @@ describe("test parse", function(){
     var prg = new Program('mycmd', 'short description of mycmd.');
     prg.addOpt('a', null, 'all option.', {isMandatory: true});
     prg.addOpt('b', 'back', 'back description.');
-    var cmd = prg.addCmd('cmd', 'cmd description.', 'usage', {ignoreMandatoryOptCheck: true});
+    var cmd = prg.addCmd('cmd', 'cmd description.', 'usage', {noMandatoryOptCheck: true});
     prg.addHelpCmd();
 
     var args = ['help', 'cmd'];

@@ -112,7 +112,7 @@ prg.addOpt('x', 'exception', 'print exception trace.',
     hasArg: true,
     defaultArg: 'X',
     multiArg: true,
-    ignoreMandatoryOptCheck: true
+    noMandatoryOptCheck: true
   });
 ```
 
@@ -122,7 +122,7 @@ Both global and command option can have these configurations:
 2. `hasArg`: Option has argument.
 3. `defaultArg`: Default value to assign when an when an option supporting argument is not passed argument.
 4. `multiArg`: Support multiple arguments like `-H value1 -H value2`.
-5. `ignoreMandatoryOptCheck`: When few options like `-v` (version) / `-h` (help) is passed, mandatory option check should be ignored.
+5. `noMandatoryOptCheck`: When few options like `-v` (version) / `-h` (help) is passed, mandatory option check should not be performed. Use along with similar options.
 
 `defaultArg` and `multiArg` will be ignored if `hasArg` is not set to `true`.
 
