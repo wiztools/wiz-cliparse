@@ -20,6 +20,9 @@ Was primarily written after getting disillusioned by existing libraries like [co
 
     npm install wiz-cliparse --save
 
+yarn:
+
+    yarn add wiz-cliparse
 ## Use
 
 ```js
